@@ -20,7 +20,7 @@ class PostTable extends Table
 
     public function allByLimit(int $limit, int $offset)
     {
-        $posts = $this->query("SELECT * FROM {$this->table} LIMIT {$limit}  OFFSET {$offset}");
+        $posts = $this->query("SELECT * FROM {$this->table} ORDER BY created_at DESC LIMIT {$limit}  OFFSET {$offset}");
 
         $ids = array_map(function (PostEntity $post) {
             return $post->getId();
@@ -45,7 +45,8 @@ class PostTable extends Table
 
         $posts = $this->query("SELECT * FROM {$this->table} as p
             JOIN post_category as pc ON pc.post_id = p.id
-            WHERE pc.category_id = {$id}
+            WHERE pc.category_id = {$id} 
+            ORDER BY created_at DESC 
             LIMIT {$limit}  OFFSET {$offset}");
 
         $ids = array_map(function (PostEntity $post) {

@@ -21,7 +21,7 @@ class PostController extends Controller
 
         $postById = $paginatedQuery->getItems();
 
-        $title = 'Mon Super MEGA blog';
+        $title = 'Tous les articles';
         $this->render(
             'post/all',
             [
