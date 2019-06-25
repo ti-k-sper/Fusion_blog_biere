@@ -22,11 +22,14 @@
 
 ### Etape 4 :  
 
-- Création URL pour atteindre acceuil de la boutique
+- Création URL pour atteindre acceuil de la boutique (et la mettre par default)
 - Création des fichiers twig en lien à l'acceuil, avec un fichier defaultBeerShop.twig (pour avoir par défault un header et un footer), ainsi qu'un fichier home.twig (pour le content)
+- Création class BeerController avec la méthode home()
 
 
 ### Etape 5 :  
 
-- 
+- Création URL pour atteindre la page de tous les articles de la boutique
+- Création du fichier twig articles.twig (pour le content)
+- Création dans class BeerController, la méthode all()
 

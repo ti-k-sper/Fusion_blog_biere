@@ -47,7 +47,7 @@ echo "||";
 //table pour biere
 //table articles biere
 $etape = $pdo->exec("CREATE TABLE `beer` (
-    `id` int(11) NOT NULL,
+    `id` int(11) NOT NULL AUTO_INCREMENT,
     `title` varchar(255) NOT NULL,
     `img` text NOT NULL,
     `content` longtext NOT NULL,
@@ -56,7 +56,7 @@ $etape = $pdo->exec("CREATE TABLE `beer` (
 )");
 //table bon de commande
 $etape = $pdo->exec("CREATE TABLE `orders` (
-    `id` int(11) NOT NULL,
+    `id` int(11) NOT NULL AUTO_INCREMENT,
     `id_user` int(11) NOT NULL,
     `ids_product` longtext NOT NULL,
     `priceTTC` float NOT NULL,
@@ -65,7 +65,7 @@ $etape = $pdo->exec("CREATE TABLE `orders` (
 echo "||";
 //table users
 $etape = $pdo->exec("CREATE TABLE `users` (
-    `id_user` int(11) NOT NULL,
+    `id` int(11) NOT NULL AUTO_INCREMENT,
     `lastname` varchar(255) NOT NULL,
     `firstname` varchar(255) NOT NULL,
     `address` varchar(255) NOT NULL,
@@ -78,7 +78,7 @@ $etape = $pdo->exec("CREATE TABLE `users` (
     `token` varchar(24) NOT NULL,
     `createdAt` timestamp NULL DEFAULT current_timestamp(),
     `verify` tinyint(1) NOT NULL DEFAULT 0,
-    PRIMARY KEY(id_user)
+    PRIMARY KEY(id)
 )");
 echo "||";
 
