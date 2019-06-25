@@ -22,7 +22,8 @@
 
 ### Etape 4 :  
 
-- 
+- Création URL pour atteindre acceuil de la boutique
+- Création des fichiers twig en lien à l'acceuil, avec un fichier defaultBeerShop.twig (pour avoir par défault un header et un footer), ainsi qu'un fichier home.twig (pour le content)
 
 
 ### Etape 5 :  
