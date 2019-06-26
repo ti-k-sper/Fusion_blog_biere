@@ -37,5 +37,5 @@
 ### Etape 6 :  
 
 - Création URL pour atteindre la page de connexion de la boutique
-- Création du fichier twig signin.twig (pour le content)
-- Création dans class BeerController, la méthode 
+- Création du fichier twig signin.twig, signup.twig (pour le content)
+- Création dans class UsersController, la méthode signin() et signup()
