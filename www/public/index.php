@@ -10,6 +10,8 @@ $app::load();
 $app->getRouter($basePath)
     ->get('/', 'Beer#home', 'shop')
     ->get('/articles', 'Beer#all', 'articles')
+    ->post('/signup', 'Users#signUp', 'signup')
+    ->post('/signin', 'Users#signIn', 'signin')
     ->get('/blog', 'Post#all', 'blog')
     ->get('/posts', 'Post#all', 'posts')
     ->get('/categories', 'Category#all', 'categories')

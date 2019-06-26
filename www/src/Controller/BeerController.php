@@ -29,7 +29,7 @@ class BeerController extends Controller
     {
         $paginatedQuery = new PaginatedQueryAppController(
             $this->beer,
-            $this->generateUrl('articles')
+            $this->generateUrl('articles'), 9
         );
 
         $articles = $paginatedQuery->getItems();

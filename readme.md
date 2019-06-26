@@ -15,15 +15,15 @@
 
 ### Etape 3 :  
 
-- Récupération requete sql création des tables du site bière et les rajouter au fichier "createsql.php"
+- Récupération requète sql création des tables du site bière et les rajouter au fichier "createsql.php"
 - Lancer les containers avec "start.sh"
 - Vérifier les nouvelles tables dans "adminer"
 
 
 ### Etape 4 :  
 
-- Création URL pour atteindre acceuil de la boutique (et la mettre par default)
-- Création des fichiers twig en lien à l'acceuil, avec un fichier defaultBeerShop.twig (pour avoir par défault un header et un footer), ainsi qu'un fichier home.twig (pour le content)
+- Création URL pour atteindre accueil de la boutique (et la mettre par défaut)
+- Création des fichiers twig en lien à l'accueil, avec un fichier defaultBeerShop.twig (pour avoir par défaut un header et un footer), ainsi qu'un fichier home.twig (pour le content)
 - Création class BeerController avec la méthode home()
 
 
@@ -33,3 +33,9 @@
 - Création du fichier twig articles.twig (pour le content)
 - Création dans class BeerController, la méthode all()
 
+
+### Etape 6 :  
+
+- Création URL pour atteindre la page de connexion de la boutique
+- Création du fichier twig signin.twig (pour le content)
+- Création dans class BeerController, la méthode 
