@@ -28,6 +28,10 @@ class App
 
     public static function load()
     {
+        define('TVA', 1.2);
+
+        session_start();
+        
         if (getenv("ENV_DEV")) {
             $whoops = new \Whoops\Run;
             $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
