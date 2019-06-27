@@ -15,7 +15,7 @@
 				<li><a href="/">Home Shop</a></li>
                 <li><a href="/blog">Home Blog</a></li>
 				<li><a href="/articles">Boutique</a></li>
-				{% if (session.user != null) %}
+				{% if (session.auth != null) %}
 					<li><a href="/purchase_order">Bon de commande</a></li>
 					<li><a href="/profil">profil</a></li>
 					<li><a href="/disconnect">deconnexion</a></li>

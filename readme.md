@@ -45,3 +45,5 @@
 - Dans signup(), utilisation de sendmail()
 - Dans signin(), utilisation de confirmMail() et updateVerifyMail
 - Dans signin(), dans le render ajoue variable $message et ajoue dans le signin.twig, message sous condition pour le faire appaitre ou pas
+- dans signin(), utilisation methode userConnect()
+- Création URL pour deconnection

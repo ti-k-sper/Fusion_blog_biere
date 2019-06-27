@@ -35,4 +35,9 @@ class UsersTable extends Table
     {
         return $this->query("UPDATE users SET verify = 1 WHERE mail = :mail", [":mail"=>$mail]);
     }
+
+    public function userConnect($mail)
+    {
+        return $this->query("SELECT * FROM users WHERE `mail`= :mail", [":mail"=>$mail], true);
+    }
 }

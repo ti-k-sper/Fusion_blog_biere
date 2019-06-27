@@ -83,6 +83,11 @@ class UsersEntity extends Entity
         return $this->password;
     }
 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
     public function getToken()
     {
         return $this->token;
