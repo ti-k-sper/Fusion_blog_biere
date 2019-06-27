@@ -75,7 +75,7 @@ $etape = $pdo->exec("CREATE TABLE `users` (
     `phone` varchar(255) NOT NULL,
     `mail` varchar(255) NOT NULL,
     `password` varchar(255) NOT NULL,
-    `token` varchar(24) NOT NULL,
+    `token` varchar(255) NOT NULL,
     `createdAt` timestamp NULL DEFAULT current_timestamp(),
     `verify` tinyint(1) NOT NULL DEFAULT 0,
     PRIMARY KEY(id)

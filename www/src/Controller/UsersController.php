@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use \Core\Controller\Controller;
 
+use \Core\Controller\Helpers\MailController;
+
 class UsersController extends Controller
 {
     public function __construct()
@@ -22,18 +24,20 @@ class UsersController extends Controller
 		isset($_POST["mail"]) && !empty($_POST["mail"]) &&
 		isset($_POST["mailVerify"]) && !empty($_POST["mailVerify"]) &&
 		isset($_POST["password"]) && !empty($_POST["password"]) &&
-		isset($_POST["passwordVerify"]) && !empty($_POST["passwordVerify"])&&
-		isset($_POST["robot"]) && empty($_POST["robot"])//protection robot
+		isset($_POST["passwordVerify"]) && !empty($_POST["passwordVerify"]) //&&
+		//isset($_POST["robot"]) && empty($_POST["robot"])//protection robot
 	    ){
-		
+		//dd($_POST["mail"]);
 		if(
 			( 	filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL) && 
 				$_POST["mail"] == $_POST["mailVerify"]
 			) &&
 			( $_POST["password"] == $_POST["passwordVerify"])
         ){
-            $user=$this->users->verifMail($_POST["mail"]);
-            
+            $mail = $_POST["mail"];
+            //dd($mail);
+            $user=$this->users->verifMail($mail);
+            //dd($user);
             if(!$user){
 				$password = password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT);
 				//génération timestamp (createdAT) clé aleatoire (token)
@@ -50,13 +54,17 @@ class UsersController extends Controller
                 ":password"		=> $password,
                 ":token"		=> $token];
                 $resultUser = $this->users->userCreate($arrayUser);
+                //dd($resultUser);
             }
 
             if($resultUser){
                 //userConnect($_POST["mail"], $_POST["password"]);
                 $subject = "Activer votre compte";
-                $sendmail = ["html" => '<h1>Bienvenue sur notre site</h1><p>Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou copier/coller dans votre navigateur internet:</p><br /><a href="http://localhost/site_biere_modif_s9_s10/mailConfirm.php?log='.urlencode($_POST["mail"]).'&token='.urlencode($token).'">cliquez pour valider votre compte</a><hr><p>Ceci est un mail automatique, Merci de ne pas y répondre.</p>'];
-                sendMail($subject, $_POST["mail"], $sendmail);
+                $sendmail = ["html" => '<h1>Bienvenue sur notre site</h1><p>Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou copier/coller dans votre navigateur internet:</p><br /><a href="http://localhost/signin/'.urlencode($_POST["mail"]).'-'.urlencode($token).'">cliquez pour valider votre compte</a><hr><p>Ceci est un mail automatique, Merci de ne pas y répondre.</p>'];
+                //dd($sendmail);
+                $mailcontroller = new MailController();
+                //dd($mailcontroller);
+                $mailcontroller->sendMail($subject, $mail, $sendmail);
                 header('location: /');
             }else{
                 die("pas ok");
@@ -74,13 +82,46 @@ class UsersController extends Controller
         );
     }
 
-    public function signIn()
+    public function signIn(string $mail = null, string $token = null)
     {
+        //dd($mail);
+        $message = false;
+        $token = urldecode($token);
+        $mail = urldecode($mail);
+        //dd($token, $mail);
+	    //récupération du token et le verify (actif) correspondant au mail dans la db
+        $user = $this->users->confirmMail($mail);
+        
+	    if ($user){
+		    $tokendb = $user->getToken();//recupération du token
+		    $verify = $user->getVerify();//verify est à 0 ou 1
+	    }
+	    // On teste la valeur de la variable $actif récupéré dans la BDD
+	    if($verify == '1') // Si le compte est déjà actif on prévient
+  	    {
+    	    $message = "Votre compte est déjà actif !";
+  	    }
+	    else // Si ce n'est pas le cas on passe aux comparaisons
+  	    {
+     	if($token == $tokendb) // On compare nos deux clés	
+       	{
+          // Si elles correspondent on active le compte !	
+          $message = "Votre compte a bien été activé !";
+ 
+          // La requête qui va passer notre champ verify de 0 à 1
+            $updateVerify = $this->users->updateVerifyMail($mail);
+       	}
+     	else // Si les deux clés sont différentes on provoque une erreur...
+       	{
+        	$message = "Erreur ! Votre compte ne peut être activé...";
+       	}
+  }
         $title = 'Beer shop - Sign in';
         $this->render(
             'users/signin',
             [
-                "title" => $title
+                "title" => $title,
+                "message" => $message
             ]
         );
     }

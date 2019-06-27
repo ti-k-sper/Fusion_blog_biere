@@ -36,6 +36,12 @@
 
 ### Etape 6 :  
 
-- Création URL pour atteindre la page de connexion de la boutique
+- Création URL pour atteindre la page de connexion et d'inscription de la boutique
 - Création du fichier twig signin.twig, signup.twig (pour le content)
 - Création dans class UsersController, la méthode signin() et signup()
+- Dans signup(), utilisation méthode verifMail() et userCreate() provenant UserTable
+- Installation swiftmailer
+- Création MailController et methode sendMail() pour utiliser swiftmailer
+- Dans signup(), utilisation de sendmail()
+- Dans signin(), utilisation de confirmMail() et updateVerifyMail
+- Dans signin(), dans le render ajoue variable $message et ajoue dans le signin.twig, message sous condition pour le faire appaitre ou pas
