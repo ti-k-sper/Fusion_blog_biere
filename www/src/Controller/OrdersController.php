@@ -30,4 +30,18 @@ class OrdersController extends Controller
         );
     }
     //calculPrice
+    public function confirmOrder()
+    {
+        
+        $title = 'Beer shop - Confirm order';
+        return $this->render(
+            'orders/confirmOrder',
+            [
+                "title" => $title,
+                "beerArray" => $beerArray,
+                "user" => $user,
+                "tva" => $tva
+            ]
+        );
+    }
 }
