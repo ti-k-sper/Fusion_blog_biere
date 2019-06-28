@@ -38,7 +38,15 @@ class OrdersController extends Controller
             $quantity = $_POST['qty'];
             $id_user = $auth->getId();
             $this->orders->createOrder($beerArray, $quantity, $id_user);
-            $id = $this->orders->lastInsId();
+            $ordersArray = $this->orders->all();
+            dump($ordersArray);
+            $ordersTotal = [];
+            foreach ($ordersArray as $key => $order) {
+                $ordersTotal[$order->getId()]= $order;
+            }
+            dump($ordersTotal);
+            $id = $ordersTotal->lastInsertId();
+            dd($id);
             $url = $this->generateUrl('purchase_order', ['id' => $id, 'id_user' => $id_user]);
             dd($url);
             header('location: '.$url);

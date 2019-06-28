@@ -29,9 +29,4 @@ class OrdersTable extends Table
         $statement = "INSERT INTO `orders` (`id_user`,`ids_product`,`priceTTC`) VALUES (:id_user, :ids_product, :priceTTC)";
         $this->query($statement, $attributes);
     }
-
-    public function lastInsId()
-    {
-        return $pdo->lastInsertId();
-    }
 }
