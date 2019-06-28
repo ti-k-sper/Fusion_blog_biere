@@ -55,7 +55,7 @@
 					<tr>
 						<td>{{ value.title }}</td>
 						<td id="PHT_{{ key }}">{{ (value.price)|number_format(2, ',', '.') }}€</td>
-						<td id="PTTC_{{key}}">{{ ((value.price)*(tva|raw))|number_format(2, ',', '.') }}€</td>
+						<td id="PTTC_{{ key }}">{{ ((value.price)*(tva|raw))|number_format(2, ',', '.') }}€</td>
 						<td><input type="number" min="0" name="qty[{{ value.id }}]" value="0" oninput="calcPrice(this, {{ key }}, {{ value.price }})" /></td>
 					</tr>
 				{% endfor %}

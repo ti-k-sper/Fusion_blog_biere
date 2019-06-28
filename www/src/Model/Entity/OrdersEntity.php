@@ -27,7 +27,7 @@ class OrdersEntity extends Entity
 
     public function getIds_product()
     {
-        return $this->ids_product;
+        return unserialize($this->ids_product);
     }
 
     public function getContent()

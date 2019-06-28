@@ -37,7 +37,7 @@ class BeerEntity extends Entity
         return $this->content;
     }
 
-    public function getPrice()
+    public function getPrice(): float
     {
         return $this->price;
     }
