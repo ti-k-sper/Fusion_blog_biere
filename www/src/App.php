@@ -14,7 +14,9 @@ class App
     public $title;
 
     private $router;
+
     private $startTime;
+    
     private $db_instance;
 
 

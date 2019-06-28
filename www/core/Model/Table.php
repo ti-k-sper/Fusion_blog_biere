@@ -57,4 +57,9 @@ class Table
     {
         return $this->query("SELECT * FROM {$this->table} LIMIT {$limit} OFFSET {$offset}");
     }
+
+    public function all()
+    {
+        return $this->query("SELECT * FROM {$this->table}");
+    }
 }
