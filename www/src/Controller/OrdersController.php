@@ -13,7 +13,7 @@ class OrdersController extends Controller
         $this->loadModel('beer');
     }
 
-    public function command()
+    public function purchaseorder()
     {
         $articles = $this->beer->all();
         //dd($articles);
@@ -21,7 +21,7 @@ class OrdersController extends Controller
         $tva = 1.2;
         $title = 'Beer shop - Purchase order';
         return $this->render(
-            'orders/command',
+            'orders/purchaseorder',
             [
                 "title" => $title,
                 "articles" => $articles,
