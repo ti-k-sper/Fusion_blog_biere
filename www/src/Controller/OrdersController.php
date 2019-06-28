@@ -13,20 +13,21 @@ class OrdersController extends Controller
         $this->loadModel('beer');
     }
 
-    public function purchaseorder()
+    public function purchaseOrder()
     {
-        $articles = $this->beer->all();
-        //dd($articles);
-        
+        $beerArray = $this->beer->all();
+        $user = $_SESSION['auth'];        
         $tva = 1.2;
         $title = 'Beer shop - Purchase order';
         return $this->render(
-            'orders/purchaseorder',
+            'orders/purchaseOrder',
             [
                 "title" => $title,
-                "articles" => $articles,
+                "beerArray" => $beerArray,
+                "user" => $user,
                 "tva" => $tva
             ]
         );
     }
+    //calculPrice
 }
