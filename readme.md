@@ -46,4 +46,15 @@
 - Dans signin(), utilisation de confirmMail() et updateVerifyMail
 - Dans signin(), dans le render ajoue variable $message et ajoue dans le signin.twig, message sous condition pour le faire appaitre ou pas
 - dans signin(), utilisation methode userConnect()
-- Création URL pour deconnection
+- Création URL pour deconnection, méthode disconnect()
+
+
+### Etape 7 :  
+
+- Création URL pour atteindre la page bon de commande de la boutique
+- Création du fichier twig purchaseOrder.twig
+- Création dans class OrdersController, la méthode purchaseOder()
+- Dans purchaseOrder.twig, action="/confirm_order
+- Création URL pour confirm_order, méthode confirmOrder()
+- Création du fichier twig confirmOrder.twig
+- 
