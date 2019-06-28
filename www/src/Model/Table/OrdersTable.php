@@ -32,6 +32,6 @@ class OrdersTable extends Table
 
     public function lastInsId()
     {
-        return $pdo>lastInsertId();
+        return $pdo->lastInsertId();
     }
 }
