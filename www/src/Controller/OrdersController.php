@@ -52,6 +52,7 @@ class OrdersController extends Controller
         //dump($order);
         $lines = $order->getIds_product();
         //dump($lines);
+        $auth = $_SESSION['auth'];
         $tva = 1.2;
 
         $title = 'Beer shop - Confirm order';
@@ -61,6 +62,7 @@ class OrdersController extends Controller
                 "title" => $title,
                 "order" => $order,
                 "lines" => $lines,
+                "auth" => $auth,
                 "tva" => $tva
             ]
         );

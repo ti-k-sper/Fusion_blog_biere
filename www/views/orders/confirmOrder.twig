@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="titreduhaut">{% block title %}{{ title }}{% endblock %}</h1>
-<h2>Commande n°{{ order.id }}
+<h2 style="text-align: center;">Commande n°{{ order.id }}
 <section id="commandSection">
 	<table>
 		<thead>
@@ -33,9 +33,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<p style="text-align: center;">Celle-ci vous sera livrée au <?= $user["address"] ?> <?= $user["zipCode"] ?> <?= $user['city'] ?> sous deux jours</p>
-		<p style="text-align:center;">
-			<small>Si vous ne réglez pas sous 10 jours, le prix de votre commande sera majoré.(25%/jour de retard)</small>
-		</p>
+	<p style="text-align: center;">Madame, Monsieur {{ auth.lastname}} {{ auth.firstname }}, vous trouverez ci dessus un récapitulatif de votre commande, que vous pouvez la retrouver dans votre profil.</p>
+	<p style="text-align: center;">Celle-ci vous sera livrée au {{ auth.address}}, {{ auth.zipCode }} {{ auth.city }} sous deux jours, après confirmation de votre règlement.</p>
 </section>
 {% endblock %}
