@@ -38,29 +38,30 @@ class OrdersController extends Controller
             $quantity = $_POST['qty'];
             $id_user = $auth->getId();
             $this->orders->createOrder($beerArray, $quantity, $id_user);
-            $ordersArray = $this->orders->all();
-            dump($ordersArray);
-            $ordersTotal = [];
-            foreach ($ordersArray as $key => $order) {
-                $ordersTotal[$order->getId()]= $order;
-            }
-            dump($ordersTotal);
-            $id = $ordersTotal->lastInsertId();
-            dd($id);
-            $url = $this->generateUrl('purchase_order', ['id' => $id, 'id_user' => $id_user]);
-            dd($url);
+            //dd($this->orders->lastInsertId());
+            $id = $this->orders->lastInsertId();
+            //dd($id);
+            $url = $this->generateUrl('confirm_order', ['id' => $id, 'id_user' => $id_user]);
             header('location: '.$url);
         }
     }
     
-    public function confirmOrder()
+    public function confirmOrder($id, $id_user)
     {
-        
+        $order = $this->orders->find($id);
+        //dump($order);
+        $lines = $order->getIds_product();
+        //dump($lines);
+        $tva = 1.2;
+
         $title = 'Beer shop - Confirm order';
         return $this->render(
             'orders/confirmOrder',
             [
-                "title" => $title
+                "title" => $title,
+                "order" => $order,
+                "lines" => $lines,
+                "tva" => $tva
             ]
         );
     }

@@ -18,7 +18,7 @@ class OrdersTable extends Table
             if($valueQty > 0) {
                 $price = $beerTotal[$key]->getPrice();
                 //dd($price);
-                $name = $beerTotal[$key]->getContent();
+                $name = $beerTotal[$key]->getTitle();
                 $qty[$key] = ['name' => $name, 'qty' => $valueQty, "price"=>$price];
                 $priceTTC += $valueQty * $price * $tva;
             }

@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1 class="titreduhaut">{% block title %}{{ title }}{% endblock %}</h1>
+<h2>Commande n°{{ order.id }}
 <section id="commandSection">
 	<table>
 		<thead>
@@ -14,21 +15,21 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach($lines as $key => $line ) : ?>
+			{% for key, line in lines %}
 				<tr>
-					<td><?= $beers[$key]["title"] ?></td>
-					<td><?= number_format($line["price"], 2, ',', '.'); ?>€</td>
-					<td><?= number_format($line["price"]*$tva, 2, ',', '.');  ?>€</td>
-					<td><?= $line["qty"] ?></td>
-					<td><?= number_format($line["price"]*$line["qty"]*$tva, 2, ',', '.'); ?>€</td>
+					<td>{{ line.name }}</td>
+					<td>{{ line.price|number_format(2, ',', '.') }}€</td>
+					<td>{{ ((line.price)*(tva|raw))|number_format(2, ',', '.') }}€</td>
+					<td>{{ line.qty }}</td>
+					<td>{{ ((line.price)*(tva|raw)*(line.qty))|number_format(2, ',', '.') }}€</td>
 				</tr>
-			<?php endforeach; ?>
+			{% endfor %}
 			<tr>
 				<td><strong>Total TTC</strong></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><strong><?= number_format($order["priceTTC"], 2, ',', '.'); ?>€</strong></td>
+				<td><strong>{{ order.priceTTC|number_format(2, ',', '.') }}€</strong></td>
 			</tr>
 		</tbody>
 	</table>

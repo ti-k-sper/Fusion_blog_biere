@@ -62,4 +62,9 @@ class Table
     {
         return $this->query("SELECT * FROM {$this->table}");
     }
+
+    public function lastInsertId()
+    {
+        return $this->db->lastInsertId();
+    }
 }

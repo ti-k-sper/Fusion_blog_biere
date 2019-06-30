@@ -54,7 +54,17 @@
 - Création URL pour atteindre la page bon de commande de la boutique
 - Création du fichier twig purchaseOrder.twig
 - Création dans class OrdersController, la méthode purchaseOder()
-- Dans purchaseOrder.twig, action="/confirm_order
+- Dans purchaseOrder(), utilisation methode createOrder() provenant de Orders Table
+- Dans purchaseOrder(), utilisation methode lastInsertId() provenant de Table, elle-même provenant de DatabaseMysqlController
+- Dans purchaseOrder.twig, action="/purchase_order
 - Création URL pour confirm_order, méthode confirmOrder()
 - Création du fichier twig confirmOrder.twig
-- 
+
+
+### TODO :
+
+- Page "Profil"
+- Page "Contact"
+- Variable globale $tva pas prise correctement
+- CSS en responsive "first mobil"
+- Nettoyage du code (enlever les dd() et les dumps())

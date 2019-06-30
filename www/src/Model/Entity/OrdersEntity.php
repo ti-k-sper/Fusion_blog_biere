@@ -30,11 +30,6 @@ class OrdersEntity extends Entity
         return unserialize($this->ids_product);
     }
 
-    public function getContent()
-    {
-        return $this->content;
-    }
-
     public function getPriceTTC()
     {
         return $this->priceTTC;
