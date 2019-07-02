@@ -176,4 +176,17 @@ class UsersController extends Controller
         header('location: /');
         exit();
     }
+
+    public function showProfil()
+    {
+        $user = $_SESSION['auth'];
+        $title = 'Beer shop - Profil';
+        return $this->render(
+            'users/showProfil',
+            [
+                "title" => $title,
+                "user" => $user
+            ]
+        );
+    }
 }
