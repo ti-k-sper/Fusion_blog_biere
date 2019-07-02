@@ -8,7 +8,8 @@
 			<h2>{{ value.title }}</h2>
 			<div><img src="{{ value.img }}" alt="{{ value.title }}" /></div>
 			<p>{{ value.content }}</p>
-			<p class="price">{{ value.price }} € (HT)</p>
+			<p class="price">{{ value.price|number_format(2, ',', '.') }} € (HT)</p>
+			<p class="price">{{ ((value.price)*(tva|raw))|number_format(2, ',', '.') }} € (TTC)</p>
 		</article>
 	{% endfor %}
 </section>

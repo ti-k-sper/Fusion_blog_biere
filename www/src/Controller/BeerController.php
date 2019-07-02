@@ -33,6 +33,7 @@ class BeerController extends Controller
         );
 
         $articles = $paginatedQuery->getItems();
+        $tva = 1.2;
 
         $title = 'Tous les articles';
         $this->render(
@@ -40,6 +41,7 @@ class BeerController extends Controller
             [
                 "title" => $title,
                 "articles" => $articles,
+                "tva" => $tva,
                 "paginate" => $paginatedQuery->getNavHtml()
             ]
         );
