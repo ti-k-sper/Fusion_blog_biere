@@ -9,11 +9,15 @@ class MailController
     public function sendMail($subject, $pMailTo, $pMessage, $pMailToBcc = true){//:string
         
         // Create the Transport, tls = plus secure que ssl
+        if (getenv('ENV_DEV')) {
+            $transport = (new \Swift_SmtpTransport('mailcatcher', 25));
+        } else {
             $transport = (new \Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
               ->setUsername(getenv('SETUSERNAME'))
               ->setPassword(getenv('SETPASSWORD'))
             ;
             //dd($transport);
+        }
         
         // Create the Mailer using your created Transport
             $mailer = new Swift_Mailer($transport);

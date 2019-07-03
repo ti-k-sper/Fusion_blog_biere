@@ -59,8 +59,8 @@ class UsersController extends Controller
 
             if($resultUser){
                 //userConnect($_POST["mail"], $_POST["password"]);
-                $subject = "Activer votre compte";
-                $sendmail = ["html" => '<h1>Bienvenue sur notre site</h1><p>Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou copier/coller dans votre navigateur internet:</p><br /><a href="http://localhost/signin/'.urlencode($_POST["mail"]).'-'.urlencode($token).'">cliquez pour valider votre compte</a><hr><p>Ceci est un mail automatique, Merci de ne pas y répondre.</p>'];
+                $subject = "Activer votre compte sur le site Beer Shop";
+                $sendmail = ["html" => '<h1>Bienvenue sur notre site Beer Shop</h1><p>Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou copier/coller dans votre navigateur internet:</p><br /><a href="http://localhost/signin/'.urlencode($_POST["mail"]).'-'.urlencode($token).'">cliquez pour valider votre compte</a><hr><p>Ceci est un mail automatique, Merci de ne pas y répondre.</p>'];
                 //dd($sendmail);
                 $mailcontroller = new MailController();
                 //dd($mailcontroller);

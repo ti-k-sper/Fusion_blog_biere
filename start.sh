@@ -15,6 +15,8 @@ sleep 10;
 
 docker exec blogbiere composer update
 
+sleep 4;
+
 docker exec blogbiere php commande/createsql.php
 
 echo
